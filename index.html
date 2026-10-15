@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>춤에 맞춘 곡</title>
+<meta name="description" content="춤 영상을 초 단위로 분석해 원래 노래보다 그 춤에 더 잘 맞는 곡을 만드는 실험">
+<style>
+  :root { --bg:#fafaf8; --fg:#1d1d1b; --muted:#6b6b66; --line:#e3e2dc; --accent:#c2410c; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141413; --fg:#ecebe6; --muted:#9a9993; --line:#2c2c2a; --accent:#fb923c; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.7 -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; }
+  main { max-width:680px; margin:0 auto; padding:48px 16px 80px; }
+  h1 { font-size:28px; line-height:1.3; margin:0 0 8px; letter-spacing:-0.01em; }
+  .lede { color:var(--muted); margin:0 0 32px; }
+  h2 { font-size:18px; margin:48px 0 12px; }
+  video { width:100%; max-height:80vh; background:#000; border-radius:10px; display:block; }
+  .cap { color:var(--muted); font-size:14px; margin:8px 0 0; }
+  ol, ul { padding-left:20px; }
+  li { margin:4px 0; }
+  table { width:100%; border-collapse:collapse; font-size:15px; }
+  th, td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-weight:600; }
+  .note { font-size:13px; color:var(--muted); border-top:1px solid var(--line); margin-top:48px; padding-top:16px; }
+  b { color:var(--accent); font-weight:600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>춤에 맞춘 곡</h1>
+  <p class="lede">춤 영상을 초 단위로 분석해서, 원래 노래보다 그 춤에 더 잘 맞는 곡을 만드는 실험입니다.</p>
+
+  <h2>같은 춤, 다른 곡 (클라이맥스 10초)</h2>
+  <video src="compare.mp4" controls playsinline preload="metadata"></video>
+  <p class="cap">앞 10초는 원래 노래, 뒤 10초는 이 춤에 맞춰 만든 곡입니다. 화면 아래 점은 분석에서 뽑은 강조 동작의 순간입니다. 소리를 켜고 보세요.</p>
+
+  <h2>만든 곡 전체 (64초)</h2>
+  <video src="full.mp4" controls playsinline preload="metadata"></video>
+
+  <h2>어떻게 만드나</h2>
+  <ol>
+    <li><b>분석</b> — 춤 영상에서 동작이 커지는 순간, 멈추는 순간, 힘을 주는 동작을 초 단위 시간표로 뽑습니다.</li>
+    <li><b>바탕 곡</b> — 생성 AI(Stable Audio)로 춤의 분위기와 템포에 맞는 곡의 몸체를 만듭니다.</li>
+    <li><b>타격</b> — 시간표의 강조 순간에 맞춰 타격음을 직접 배치하고, 그 직전에는 곡이 비켜나도록 정리합니다(FL Studio).</li>
+    <li><b>판정</b> — 마지막엔 직접 듣고 고칩니다. 수치 검사는 후보를 거르는 용도일 뿐입니다.</li>
+  </ol>
+
+  <h2>사람과 AI의 역할</h2>
+  <table>
+    <tr><th>AI에 맡긴 것</th><th>사람이 정한 것</th></tr>
+    <tr><td>곡의 질감, 음색, 분위기</td><td>소리가 터지는 정확한 순간</td></tr>
+    <tr><td>동작 분석의 초안</td><td>어느 동작이 중요한지, 어디가 안 맞는지</td></tr>
+  </table>
+  <p>생성 AI는 그럴듯한 곡은 잘 만들지만, 소리가 정확히 어느 순간에 터져야 하는지는 맞추지 못했습니다. 그래서 타이밍은 분석과 사람의 판단으로 정하고, AI에는 소리의 질감만 맡기는 방식으로 나눴습니다. 이 영상의 곡은 여러 차례 듣고 고친 끝에 "원곡보다 춤에 잘 맞는다"고 판단한 버전입니다.</p>
+
+  <p class="note">댄서의 동의를 받아 공개하며, 얼굴은 모자이크 처리했습니다. 원곡은 비교를 위해 10초만 사용했습니다. · 송호현</p>
+</main>
+</body>
+</html>
