@@ -19,7 +19,7 @@
   h2 { font-size:22px; margin:0 0 4px; }
   .lede { color:var(--muted); margin:0 0 18px; }
   h3 { font-size:16px; margin:28px 0 10px; }
-  .flow { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; counter-reset:s; }
+  .flow { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(132px, 1fr)); gap:8px; counter-reset:s; }
   .flow li { background:var(--chip); border-radius:10px; padding:12px; font-size:14px; line-height:1.5; counter-increment:s; }
   .flow li::before { content:counter(s); display:block; font-weight:700; color:var(--accent); margin-bottom:2px; }
   .flow b { display:block; font-size:15px; }
@@ -48,16 +48,18 @@
     <h2>몸으로 쓴 악보</h2>
     <p class="lede">춤 영상을 초 단위로 분석해, 그 춤에 맞는 곡을 만듭니다.</p>
     <ol class="flow">
-      <li><b>분석</b>동작이 커지고·멈추고·힘이 들어가는 순간을 시간표로</li>
-      <li><b>바탕 곡</b>생성 AI(Stable Audio)로 분위기·템포에 맞는 곡의 몸체</li>
-      <li><b>타격</b>강조 순간에 타격음을 직접 배치(FL Studio)</li>
-      <li><b>판정</b>사람이 듣고 어긋난 곳을 고침</li>
+      <li><b>분석</b>AI가 동작이 커지고·멈추고·힘이 들어가는 순간을 초 단위 시간표로</li>
+      <li><b>선별</b>그중 소리로 살릴 동작을 사람이 고름</li>
+      <li><b>바탕 곡</b>Stable Audio로 분위기·템포에 맞는 후보를 여러 개 만들고 수치 검사로 거름</li>
+      <li><b>타격</b>고른 순간에 타격음을 직접 배치(FL Studio)</li>
+      <li><b>비켜내기</b>타격 직전에는 곡이 물러나도록 정리</li>
+      <li><b>판정·반복</b>듣고 어긋난 곳을 고쳐 다시 만드는 과정을 여러 차례</li>
     </ol>
     <h3>결과</h3>
     <div class="watch">
       <video src="dance.mp4" controls playsinline preload="metadata" poster="img/poster.jpg"></video>
     </div>
-    <p class="cap">소리를 켜고 보세요. 얼굴은 모자이크 처리했습니다.</p>
+    <p class="cap">댄서의 동의를 받아 제작한 영상입니다.</p>
   </section>
 
   <section id="jjori">
@@ -78,12 +80,11 @@
       <figure><img src="img/nedda-5.jpg" alt="글자 위로 할인 쿠폰이 떠오르는 장면" loading="lazy"><figcaption>쿠폰</figcaption></figure>
       <figure><img src="img/nedda-6.jpg" alt="번개 무대와 쏟아지는 선물" loading="lazy"><figcaption>쏟아지는 혜택</figcaption></figure>
     </div>
-    <p class="cap">쪼리와 글자는 Blender, 번개 무대와 선물은 생성 AI. 전체 영상: <a href="https://www.instagram.com/p/DeTj0-QsDjQ/">인스타그램</a></p>
+    <p class="cap">쪼리와 글자는 Blender, 번개 무대와 선물은 생성 AI.</p>
     <h3>Blender 작업 화면</h3>
     <figure><img src="img/blender-proxy.jpg" alt="사진 배경 위에 3D 바위·사과 충돌면을 겹쳐 본 Blender 확인 화면" loading="lazy"><figcaption>사진 배경 위에 3D 바위·사과 충돌면(그물)을 맞춰, 쪼리 발이 실제로 닿고 가려지게 함</figcaption></figure>
   </section>
 
-  <p class="note">송호현 · 쪼리 인스타 <a href="https://www.instagram.com/hi_jjori/">@hi_jjori</a></p>
 </main>
 </body>
 </html>
